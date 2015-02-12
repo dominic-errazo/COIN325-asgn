@@ -63,6 +63,7 @@ public class PushRandomPanelTester {
             buttonHold.doClick();
             labelHold = testPanel.getLabel();
             savedValue = Integer.parseInt(labelHold.getText());
+            //System.out.println(savedValue);
             assertTrue(savedValue > 0 & savedValue < 101);
             
         }
