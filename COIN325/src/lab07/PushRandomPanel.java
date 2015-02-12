@@ -34,12 +34,12 @@ public class PushRandomPanel extends JPanel {
         setPreferredSize(new Dimension(400, 300));
     }
     
-    public JButton getButton() {
-        return mMyButton;
+    public void clickButton() {
+        mMyButton.doClick();
     }
     
-    public JLabel getLabel() {
-        return mNumber;
+    public String getLabelText() {
+        return mNumber.getText();
     }
     
     private class RandomListener implements ActionListener {

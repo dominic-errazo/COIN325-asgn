@@ -22,8 +22,6 @@ import static org.junit.Assert.*;
 public class PushRandomPanelTester {
     
     private PushRandomPanel testPanel;
-    private JButton buttonHold;
-    private JLabel labelHold;
     
     
     public PushRandomPanelTester() {
@@ -54,15 +52,11 @@ public class PushRandomPanelTester {
     
     @Test
     public void checkValues() {
-        buttonHold = testPanel.getButton();
-        
         int savedValue;
         
         for(int i = 0; i < 20; i++) {
-            
-            buttonHold.doClick();
-            labelHold = testPanel.getLabel();
-            savedValue = Integer.parseInt(labelHold.getText());
+            testPanel.clickButton();
+            savedValue = Integer.parseInt(testPanel.getLabelText());
             //System.out.println(savedValue);
             assertTrue(savedValue > 0 & savedValue < 101);
             
