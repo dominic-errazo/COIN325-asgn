@@ -50,7 +50,7 @@ public class Quiz {
         int correct = 0;
         
         for(int i = 0; i < size; i++)
-            if(contents[i].getAnswer() == contents[i].getResponse())
+            if(contents[i].getAnswer().equals(contents[i].getResponse()))
                 correct++;
         
         return correct;
@@ -61,12 +61,22 @@ public class Quiz {
         for(int i = 0; i < size; i++) {
             contents[i].setResponse(JOptionPane.showInputDialog(contents[i].getQuestion()));
         }
+        for(int i = 0; i < size; i++) {
+            System.out.println(contents[i].getQuestion() + ", Student response: " +
+                               contents[i].getResponse() + ", Instructor's answer: " +
+                               contents[i].getAnswer());
+        }
+        System.out.println("Auto-grader: " + getNumberOfCorrectResponses() +
+                            " out of " + size);
     }
+    
+    
 
     public static void main(String[] args) {
         Quiz myQuiz = new Quiz();
         myQuiz.add(new Question("What is 2+2?", "4"));
         myQuiz.add(new Question("What is the best part of the Oreo?", 
                                 "the whole thing"));
+        myQuiz.giveQuiz();
     }
 }
