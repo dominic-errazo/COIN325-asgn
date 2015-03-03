@@ -44,4 +44,26 @@ public class QuizTest {
         assertTrue(quiz.getNumberOfCorrectResponses() == 1);
         
     }
+    
+    @Test
+    public void testFromFile() {
+        Quiz quiz = new Quiz();
+        quiz.addFromFile("src/lab10/shortQuiz.txt");
+        
+        assertTrue(quiz.getNumberOfQuestions() == 4);
+    }
+    
+    @Test
+    public void testFullFromFile() {
+        Quiz quiz = new Quiz();
+        quiz.addFromFile("src/lab10/fullQuiz.txt");
+        
+        assertTrue(quiz.getNumberOfQuestions() == 25);
+        
+        for(int i = 1; i <= 25; i++) {
+            Question current = quiz.getQuestion(i-1);
+            current.setResponse(Integer.toString(2 * i));
+            assertTrue(quiz.getNumberOfCorrectResponses() == i);
+        }
+    }
 }

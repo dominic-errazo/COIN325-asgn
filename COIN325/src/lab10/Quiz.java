@@ -7,6 +7,9 @@
 package lab10;
 
 import javax.swing.JOptionPane;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -17,6 +20,7 @@ public class Quiz {
     private Question[] contents;
     private final int MAX_QUESTIONS = 25;
     private int size;
+    private Scanner fileReader;
     
     public Quiz() {
         contents = new Question[MAX_QUESTIONS];
@@ -31,6 +35,22 @@ public class Quiz {
             
         }
         else return false;
+    }
+    
+    public void addFromFile(String filename) {
+        try {
+            fileReader = new Scanner(new File(filename));
+            String line;
+            String[] qAndA;
+            while(fileReader.hasNext()) {
+                line = fileReader.nextLine();
+                qAndA = line.split("\t");
+                add(new Question(qAndA[0], qAndA[1]));
+            }
+        }
+        catch(FileNotFoundException e) {
+            System.err.println("File not found! Please check path!");
+        }
     }
     
     public Question getQuestion(int index) {
@@ -77,6 +97,10 @@ public class Quiz {
         myQuiz.add(new Question("What is 2+2?", "4"));
         myQuiz.add(new Question("What is the best part of the Oreo?", 
                                 "the whole thing"));
+        
+        //System.out.println(System.getProperty("user.dir"));
+        //myQuiz.addFromFile("src/lab10/shortQuiz.txt");
         myQuiz.giveQuiz();
+
     }
 }
