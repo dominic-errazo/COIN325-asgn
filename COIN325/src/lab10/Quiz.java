@@ -27,6 +27,11 @@ public class Quiz {
         size = 0;
     }
     
+    public void clear() {
+        contents = new Question[MAX_QUESTIONS];
+        size = 0;
+    }
+    
     public boolean add(Question question) {
         if(size < MAX_QUESTIONS) {
             

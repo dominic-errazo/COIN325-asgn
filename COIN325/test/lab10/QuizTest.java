@@ -9,7 +9,10 @@ import static org.junit.Assert.*;
  */
 public class QuizTest {
     
+    private Quiz quiz;
+    
     public QuizTest() {
+        quiz = new Quiz();
     }
 
     @Test
@@ -21,7 +24,6 @@ public class QuizTest {
     
     @Test
     public void testQuiz() {
-        Quiz quiz = new Quiz();
         Question q = new Question("What is the best part of the Oreo?", "the whole thing");
         Question q2 = new Question("What is 1+1?", "2");
         
@@ -47,7 +49,7 @@ public class QuizTest {
     
     @Test
     public void testFromFile() {
-        Quiz quiz = new Quiz();
+        quiz.clear();
         quiz.addFromFile("src/lab10/shortQuiz.txt");
         
         assertTrue(quiz.getNumberOfQuestions() == 4);
@@ -55,7 +57,7 @@ public class QuizTest {
     
     @Test
     public void testFullFromFile() {
-        Quiz quiz = new Quiz();
+        quiz.clear();
         quiz.addFromFile("src/lab10/fullQuiz.txt");
         
         assertTrue(quiz.getNumberOfQuestions() == 25);
