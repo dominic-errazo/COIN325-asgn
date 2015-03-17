@@ -43,6 +43,7 @@ public class ShapeTester {
         assertTrue(rect.getNumberOfAngles() == 4);
         assertEquals(7.0, rect.getArea(), delta);
         assertEquals(11.0, rect.getCircumference(), delta);
+        assertEquals(3.4 * 6.5, new Rectangle(3.4, 6.5).getArea(), delta);
     }
     
     @Test
@@ -52,5 +53,6 @@ public class ShapeTester {
         assertTrue(rTriangle.getNumberOfAngles() == 3);
         assertEquals(6.0, rTriangle.getArea(), delta);
         assertEquals(12.0, rTriangle.getCircumference(), delta);
+        assertEquals(3.4 * 6.5 / 2.0, new RightTriangle(3.4, 6.5).getArea(), delta);
     }
 }
