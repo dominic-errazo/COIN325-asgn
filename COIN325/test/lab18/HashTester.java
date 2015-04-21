@@ -39,7 +39,7 @@ public class HashTester {
         
         assertTrue(hash.get("123-45-6789Vulcan").getBDay().equals("01-01-2000"));
         assertTrue(hash.size() == 3);
-        hash.put("123-45-5000Human", emp); //note: deal with duplicates
+        hash.put("123-45-5000Human", emp); //deal with duplicates
         assertTrue(hash.size() == 3);
         
         //testing collision but not same value
