@@ -1,0 +1,23 @@
+===List of changes===
+
+Kind of started over from scratch for the sake of thinking from a Swing standpoint that could be expanded to Android later on.
+
+
+
+interface Loader: loads in data to be used in the program.
+	class TSVLoader: reads data from TSV files and just uses those 
+	class DBLoader: reads from a sqlite database for data using JDBC - possibly slower access of data, but less space used in the program proper - ended up having too much trouble and didn't get to implement, but I'd like to come back to this sometime to try it
+class Cheese: hold the name of a cheese and its description, basically a fancy key-value pair.
+class CheeseDBPanel: the catchall class that handles what is displayed.
+class CheeseDBRunner: actually does the displaying of the panel above.
+
+two .tsv files giving associations of brief descriptive tags with cheeses fulfilling those descriptors in some fashion, and cheeses with brief descriptions.
+	
+Guava was used because Multimaps are great.
+	
+Much had to be done in Swing after running into a lot of problems trying to use two simultaneous JLists, as even when creating different ListSelectionModels to handle what was being selected in each list, each seemed to give the same source. JLists are really a hassle to work with given the models and such they have to handle just to edit them.
+
+Quick overview of how this final version works:
+* Users select a tag via buttons in order to display cheeses, with the option to browse all cheeses given
+* Cheeses are listed as buttons and can be selected
+* Upon selection, gives the name of the cheese to the right and a brief description
