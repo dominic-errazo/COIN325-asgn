@@ -159,9 +159,10 @@ public class CheeseDBPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton src = (JButton) e.getSource();
-        System.out.println(src.getName());
+        
+        //check whether the button is from the tag or cheeses section
         if(src.getName().equals("tag_button")) {
-            //repopulate the cheese button panel
+            //repopulate the cheese button panel with the pertinent cheeses
             cheeseButtons.removeAll();
             Set<String> result;
             if(src.getText().equals("ALL CHEESES")) {
@@ -177,13 +178,14 @@ public class CheeseDBPanel extends JPanel implements ActionListener{
                 String buttonText = cheeseAdd.next();
                 System.out.println(buttonText);
                 JButton cButton = new JButton(buttonText);
-                cButton.setName("cheese_button");
+                cButton.setName("cheese_button"); //important for the else-if
                 cButton.addActionListener(this);
                 cheeseButtons.add(cButton);
             }
             cheeseButtons.revalidate();
         }
         else if(src.getName().equals("cheese_button")) {
+            //display selected cheese and its description
             name.setText(src.getText());
             Cheese selected = data.getCheese(src.getText());
             desc.setText(selected.getDescription());
