@@ -1,0 +1,11 @@
+Though I attempted to design my code so as to separate the data-managing backend from the manipulation thereof, I ran into a lot of issues.
+
+My initial class diagram design was aimed at an android-only codebase rather than a java data manager and android files that would display and manipulate the data on top. I made the mistake of looking at just the API in order to figure out which components I would need, rather than taking a comprehensive look at everything I would need in order to make an app run.
+I did run into some issues attempting to get Guava imported; editing the build.gradle file didn't seem to work, but moving the .jar around did manage to get it working; I feared I would have to rewrite the data management in a very clunky way. Granted, it would have been relatively easy to just convert HashMultimaps to HashMaps with a list as the Value, if a tad time-consuming.
+
+Additionally, I ran into the severe issue of not being able to actually run my application at all - the emulator was not working on my laptop nor my desktop; laptop BIOS check didn't give me an option to enable the Intel VT-X setting, and despite going in and enabling it on my desktop, Intel HAXM still reported that VT-X was disabled. I tried connecting spare devices as well in order to run the application live on a spare Android phone, but I had no luck there.
+
+In its incomplete state, the application is currently written as I would think passing information from screen to screen would work:
+The intended functionality is that the user navigates through a tag ListView, then a cheese ListView in order to see a cheese and description.
+
+As it stands, it might have been nicer to have TSVLoader implement Parcelable in order to only create the data loader once and then have it passed from the tag list screen to the cheese list screen in order to avoid reading from the .tsv files mulitple times.
